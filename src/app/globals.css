@@ -2,21 +2,101 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-	line-height: 1.5;
-	font-weight: 400;
-	font-synthesis: none;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	font-family: 'Inter', sans-serif;
-	font-optical-sizing: auto;
-	font-style: normal;
-	font-variation-settings: 'slnt' 0;
+/* Set a default font family for the body */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: black; /* Change background to black */
+  color: white; /* Change text color to white for better contrast */
 }
 
-@layer base {
-	body {
-		@apply bg-zinc-950 text-neutral-200;
-	}
+/* Add other global styles here */
+html, body, #__next {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.image-container {
+  width: 100%;
+}
+
+.glowing-border {
+  border: 2px solid transparent;
+  box-shadow: 0 0 20px red;
+  border-radius: 12px;
+  width: 100%;
+  height: auto;
+  background: #f3f3f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.large-bold-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.small-text {
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.price-remaining {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  font-size: 0.8rem;
+}
+
+.price-remaining-large {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.mint-button {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 1rem;
+  background-color: cyan;
+  color: black;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.text-shadow {
+  text-shadow: 1px 1px 2px cyan;
+}
+
+.green-box {
+  color: white;
+  background-color: green;
+  border-radius: 8px;
+  padding: 0.2rem 0.6rem;
+  display: inline-block;
+}
+
+.red-box {
+  background-color: red;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 2px;
+}
+
+.gray-box {
+  border: 2px solid gray;
+  border-radius: 12px;
+  padding: 0.2rem 0.6rem;
+  display: inline-block;
+  color: gray;
 }

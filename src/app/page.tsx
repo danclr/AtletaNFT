@@ -41,7 +41,7 @@ export default function Home() {
 
   return (
     <main className="flex items-center justify-center min-h-[100vh] bg-black-100">
-      <div className="relative w-[350px] h-[550px] bg- shadow-lg rounded-lg p-4">
+      <div className="relative w-[370px] h-[550px] bg- shadow-lg rounded-lg p-4">
         <div className="absolute top-4 right-4">
           <ConnectButton
             client={client}

@@ -117,3 +117,19 @@ html, body, #__next {
   position: absolute;
   z-index: -1;
 }
+.custom-button {
+  background-color: transparent; /* Make the inside of the button transparent */
+  color: white; /* Change text color to white */
+  border: 2px solid cyan; /* Cyan borders */
+  border-radius: 4px; /* Less rounded corners */
+  padding: 12px 24px; /* Increase padding for a bigger button */
+  width: 310px; /* Set the button width to 370px */
+  font-family: 'Orbitron', sans-serif; /* Change the font family */
+  box-shadow: 0 0 10px 2px cyan; /* Add a small cyan shadow */
+  text-align: center; /* Center text */
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  font-size: 1.2rem; /* Increase font size */
+  margin: 0 auto; /* Center the button horizontally */
+}

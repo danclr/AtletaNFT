@@ -7,6 +7,8 @@ import { sepolia } from "thirdweb/chains";
 import { claimTo, getActiveClaimCondition, getTotalClaimedSupply, nextTokenIdToMint } from "thirdweb/extensions/erc721";
 import { useState } from "react";
 
+
+
 export default function Home() {
   const account = useActiveAccount();
 
@@ -28,6 +30,7 @@ export default function Home() {
     { contract: contract }
   );
 
+  
   const { data: totalNFTSupply, isLoading: isTotalSupplyLoading } = useReadContract(nextTokenIdToMint,
     { contract: contract }
   );
@@ -55,10 +58,12 @@ export default function Home() {
             <p>Loading...</p>
           ) : (
             <p className="text-lg mt-2 font-bold text-shadow-cyan">
-              Total NFT Supply: {claimedSupply?.toString()}/{totalNFTSupply?.toString()}
+              Minted: {claimedSupply?.toString()}/{totalNFTSupply?.toString()}
             </p>
           )}
-          <TransactionButton
+          <TransactionButton 
+            unstyled
+            className="custom-button"
             transaction={() => claimTo({
               contract: contract,
               to: account?.address || "",
@@ -69,9 +74,9 @@ export default function Home() {
               setTransactionHash(receipt.transactionHash);
               setQuantity(1);
             }}
-            className="text-2xl px-8 py-4 mt-4 bg-blue-500 text-white rounded-lg w-full"
+            
           >
-            {`Claim NFT (${getPrice(1)} atla)`}  
+            {`CLAIM NFT (${getPrice(1)} )`}  
           </TransactionButton>
           <div className="h-8 mt-2">  {/* Reserve space for the message */}
             {confirmationMessage && (

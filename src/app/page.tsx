@@ -42,6 +42,10 @@ export default function Home() {
   return (
     <main className="p-4 pb-10 min-h-[100vh] items-center absolute top-0 left-0 container max-w-screen-lg mx-auto">
       <div className="">
+        <ConnectButton
+          client={client}
+          chain={chain}
+        />
         <div className="">
           {isClaimedSupplyLoading || isTotalSupplyLoading ? (
             <p>Loading...</p>

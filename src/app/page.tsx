@@ -14,6 +14,7 @@ export default function Home() {
   const chain = defineChain(2340);
 
   const [quantity, setQuantity] = useState<number>(1);
+  const [confirmationMessage, setConfirmationMessage] = useState<string>("");
 
   // Replace the address with the address of the deployed contract
   const contract = getContract({
@@ -63,13 +64,18 @@ export default function Home() {
               quantity: BigInt(1),  // Hardcoded to 1
             })}
             onTransactionConfirmed={async () => {
-              alert("NFT Claimed!");
+              setConfirmationMessage("NFT Claimed!");
               setQuantity(1);
             }}
             className="text-2xl px-8 py-4 mt-4 bg-blue-500 text-white rounded-lg w-full"
           >
             {`Claim NFT (${getPrice(1)} atla)`}  
           </TransactionButton>
+          {confirmationMessage && (
+            <p className="text-lg mt-4 font-bold" style={{ color: 'green' }}>
+              {confirmationMessage}
+            </p>
+          )}
         </div>
       </div>
     </main>

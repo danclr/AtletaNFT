@@ -40,14 +40,13 @@ export default function Home() {
   };
 
   return (
-    <main className="p-4 pb-10 min-h-[100vh]  items-center absolute top-0 left-0 container max-w-screen-lg mx-auto">
+    <main className="p-4 pb-10 min-h-[100vh] items-center absolute top-0 left-0 container max-w-screen-lg mx-auto">
       <div className="">
-        
         <div className="">
           {isClaimedSupplyLoading || isTotalSupplyLoading ? (
             <p>Loading...</p>
           ) : (
-            <p className="text-lg mt-2 font-bold">
+            <p className="text-4xl mt-2 font-bold">
               Total NFT Supply: {claimedSupply?.toString()}/{totalNFTSupply?.toString()}
             </p>
           )}
@@ -61,6 +60,7 @@ export default function Home() {
               alert("NFT Claimed!");
               setQuantity(1);
             }}
+            className="text-4xl px-8 py-4 mt-4 bg-blue-500 text-white rounded-lg"
           >
             {`Claim NFT (${getPrice(1)} atla)`}  
           </TransactionButton>

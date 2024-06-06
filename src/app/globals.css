@@ -20,16 +20,16 @@ html, body, #__next {
 }
 
 .image-container {
-  width: 100%;
+  margin-right: 20px; /* Adjust this value to increase/decrease space between image and text */
 }
 
 .glowing-border {
   border: 2px solid transparent;
-  box-shadow: 0 0 20px red;
+  box-shadow: 0 0 20px cyan;
   border-radius: 12px;
-  width: 100%;
+  width: auto;
   height: auto;
-  background: #f3f3f3;
+  background: #000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,14 +49,14 @@ html, body, #__next {
 .price-remaining {
   display: flex;
   justify-content: space-between;
-  width: 30%;
+  width: 100%;
   font-size: 0.8rem;
 }
 
 .price-remaining-large {
   display: flex;
   justify-content: space-between;
-  width: 30%;
+  width: 100%;
   font-size: 1rem;
   font-weight: bold;
 }
@@ -100,3 +100,22 @@ html, body, #__next {
   display: inline-block;
   color: gray;
 }
+
+/* New styles for the green border box */
+.green-border-box {
+  border: 4px solid green;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px auto;
+  display: inline-block;
+  max-width: 90%;
+}
+
+/* globals.css */
+
+.hidden-button {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+

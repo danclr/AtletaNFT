@@ -15,6 +15,7 @@ export default function Home() {
 
   const [quantity, setQuantity] = useState<number>(1);
   const [confirmationMessage, setConfirmationMessage] = useState<string>("");
+  const [transactionHash, setTransactionHash] = useState<string | null>(null);
 
   // Replace the address with the address of the deployed contract
   const contract = getContract({
@@ -63,8 +64,9 @@ export default function Home() {
               to: account?.address || "",
               quantity: BigInt(1),  // Hardcoded to 1
             })}
-            onTransactionConfirmed={async () => {
+            onTransactionConfirmed={async (receipt) => {
               setConfirmationMessage("NFT Claimed!");
+              setTransactionHash(receipt.transactionHash);
               setQuantity(1);
             }}
             className="text-2xl px-8 py-4 mt-4 bg-blue-500 text-white rounded-lg w-full"
@@ -75,6 +77,16 @@ export default function Home() {
             {confirmationMessage && (
               <p className="text-lg font-bold" style={{ color: 'green' }}>
                 {confirmationMessage}
+                {transactionHash && (
+                  <a
+                    href={`https://blockscout.atleta.network/tx/${transactionHash}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ml-2 underline text-blue-500"
+                  >
+                    View Transaction
+                  </a>
+                )}
               </p>
             )}
           </div>

@@ -71,11 +71,13 @@ export default function Home() {
           >
             {`Claim NFT (${getPrice(1)} atla)`}  
           </TransactionButton>
-          {confirmationMessage && (
-            <p className="text-lg mt-4 font-bold" style={{ color: 'green' }}>
-              {confirmationMessage}
-            </p>
-          )}
+          <div className="h-8 mt-2">  {/* Reserve space for the message */}
+            {confirmationMessage && (
+              <p className="text-lg font-bold" style={{ color: 'green' }}>
+                {confirmationMessage}
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </main>

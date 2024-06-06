@@ -40,10 +40,10 @@ export default function Home() {
   };
 
   return (
-    <main className="p-4 pb-10 min-h-[100vh] flex items-center justify-center container max-w-screen-lg mx-auto">
-      <div className="py-20 text-center">
+    <main className="p-4 pb-10 min-h-[100vh]  items-center absolute top-0 left-0 container max-w-screen-lg mx-auto">
+      <div className="">
         
-        <div className="flex flex-col items-center mt-4">
+        <div className="">
           {isClaimedSupplyLoading || isTotalSupplyLoading ? (
             <p>Loading...</p>
           ) : (

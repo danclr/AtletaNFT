@@ -40,17 +40,19 @@ export default function Home() {
   };
 
   return (
-    <main className="p-4 pb-10 min-h-[100vh] items-center absolute top-0 left-0 container max-w-screen-lg mx-auto">
-      <div className="">
-        <ConnectButton
-          client={client}
-          chain={chain}
-        />
-        <div className="">
+    <main className="flex items-center justify-center min-h-[100vh] bg-black-100">
+      <div className="relative w-[350px] h-[550px] bg- shadow-lg rounded-lg p-4">
+        <div className="absolute top-4 right-4">
+          <ConnectButton
+            client={client}
+            chain={chain}
+          />
+        </div>
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center">
           {isClaimedSupplyLoading || isTotalSupplyLoading ? (
             <p>Loading...</p>
           ) : (
-            <p className="text-4xl mt-2 font-bold">
+            <p className="text-lg mt-2 font-bold text-shadow-cyan">
               Total NFT Supply: {claimedSupply?.toString()}/{totalNFTSupply?.toString()}
             </p>
           )}
@@ -64,7 +66,7 @@ export default function Home() {
               alert("NFT Claimed!");
               setQuantity(1);
             }}
-            className="text-4xl px-8 py-4 mt-4 bg-blue-500 text-white rounded-lg"
+            className="text-2xl px-8 py-4 mt-4 bg-blue-500 text-white rounded-lg"
           >
             {`Claim NFT (${getPrice(1)} atla)`}  
           </TransactionButton>

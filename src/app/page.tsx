@@ -40,8 +40,8 @@ export default function Home() {
   };
 
   return (
-    <main className="flex items-center justify-center min-h-[100vh] bg-black-100">
-      <div className="relative w-[370px] h-[550px] bg- shadow-lg rounded-lg p-4">
+    <main className="flex items-center justify-center min-h-[100vh] bg-transparent">
+      <div className="relative w-[370px] h-[550px] shadow-lg rounded-lg p-4" style={{ backgroundColor: 'transparent' }}>
         <div className="absolute top-4 right-4">
           <ConnectButton
             client={client}
@@ -66,7 +66,7 @@ export default function Home() {
               alert("NFT Claimed!");
               setQuantity(1);
             }}
-            className="text-2xl px-8 py-4 mt-4 bg-blue-500 text-white rounded-lg"
+            className="text-2xl px-8 py-4 mt-4 bg-blue-500 text-white rounded-lg w-full"
           >
             {`Claim NFT (${getPrice(1)} atla)`}  
           </TransactionButton>

@@ -8,8 +8,8 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: black; /* Change background to black */
-  color: white; /* Change text color to white for better contrast */
+  background-color: black; /* Ensure background is black */
+  color: white; /* Ensure text color is white */
 }
 
 /* Add other global styles here */
@@ -29,7 +29,7 @@ html, body, #__next {
   border-radius: 12px;
   width: auto;
   height: auto;
-  background: #000;
+  background: transparent; /* Ensure background is transparent */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -111,11 +111,9 @@ html, body, #__next {
   max-width: 90%;
 }
 
-/* globals.css */
-
+/* Ensure hidden button is truly hidden */
 .hidden-button {
   opacity: 0;
   position: absolute;
   z-index: -1;
 }
-

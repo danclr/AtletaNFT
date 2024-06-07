@@ -1,16 +1,17 @@
 'use client';
 
-import { ConnectButton, TransactionButton, useActiveAccount, useReadContract } from "thirdweb/react";
+import { TransactionButton, useActiveAccount, useReadContract } from "thirdweb/react";
 import { client } from "./client";
 import { defineChain, getContract, toEther } from "thirdweb";
 import { sepolia } from "thirdweb/chains";
 import { claimTo, getActiveClaimCondition, getTotalClaimedSupply, nextTokenIdToMint } from "thirdweb/extensions/erc721";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-
+export type ConnectButtonProps = {};
 
 export default function Home() {
   const account = useActiveAccount();
+  const [walletAddress, setWalletAddress] = useState<string | null>(null);
 
   // Replace the chain with the chain you want to connect to
   const chain = defineChain(2340);
@@ -30,7 +31,6 @@ export default function Home() {
     { contract: contract }
   );
 
-  
   const { data: totalNFTSupply, isLoading: isTotalSupplyLoading } = useReadContract(nextTokenIdToMint,
     { contract: contract }
   );
@@ -44,14 +44,55 @@ export default function Home() {
     return toEther(BigInt(total));
   };
 
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data.type === 'walletConnected') {
+        setWalletAddress(event.data.account);
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+    return () => {
+      window.removeEventListener('message', handleMessage);
+    };
+  }, []);
+
+  const connectWallet = () => {
+    window.parent.postMessage('connectWallet', '*');
+  };
+
   return (
     <main className="flex items-center justify-center min-h-[100vh]" style={{ backgroundColor: 'transparent' }}>
-      <div className="relative w-[570px] h-[850px] shadow-lg rounded-lg p-4" style={{ backgroundColor: 'transparent' }}>
+      <div className="relative w-[670px] h-[770px] shadow-lg rounded-lg p-4" style={{ backgroundColor: 'transparent' }}>
         <div className="absolute top-4 right-4">
-          <ConnectButton
-            client={client}
-            chain={chain}
-          />
+          {!walletAddress ? (
+            <button
+              onClick={connectWallet}
+              style={{
+                backgroundColor: "transparent",
+                color: "#00FFFF",
+                border: "2px solid #00FFFF",
+                borderRadius: "10px",
+                padding: "10px 20px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "auto",
+                boxSizing: "border-box",
+                cursor: "pointer",
+                fontFamily: "Orbitron, sans-serif",
+                fontWeight: "bold",
+                fontSize: "24px",
+                transition: "background-color 0.3s, color 0.3s, box-shadow 0.3s",
+              }}
+            >
+              Log In
+            </button>
+          ) : (
+            <p className="text-lg mt-2 font-bold text-shadow-cyan">
+              User Balance: {walletAddress}
+            </p>
+          )}
         </div>
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center">
           {isClaimedSupplyLoading || isTotalSupplyLoading ? (

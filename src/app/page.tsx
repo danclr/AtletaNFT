@@ -1,6 +1,6 @@
 'use client';
 
-import { TransactionButton, useActiveAccount, useReadContract } from "thirdweb/react";
+import { ConnectButton, TransactionButton, useActiveAccount, useReadContract } from "thirdweb/react";
 import { client } from "./client";
 import { defineChain, getContract, toEther } from "thirdweb";
 import { sepolia } from "thirdweb/chains";
@@ -65,34 +65,31 @@ export default function Home() {
     <main className="flex items-center justify-center min-h-[100vh]" style={{ backgroundColor: 'transparent' }}>
       <div className="relative w-[670px] h-[770px] shadow-lg rounded-lg p-4" style={{ backgroundColor: 'transparent' }}>
         <div className="absolute top-4 right-4">
-          {!walletAddress ? (
-            <button
-              onClick={connectWallet}
-              style={{
-                backgroundColor: "transparent",
-                color: "#00FFFF",
-                border: "2px solid #00FFFF",
-                borderRadius: "10px",
-                padding: "10px 20px",
+          <ConnectButton
+            client={client}
+            chain={chain}
+            connectButton={{
+              style: {
+                backgroundColor: "transparent", // Transparent background
+                color: "#00FFFF", // Cyan text color
+                border: "2px solid #00FFFF", // Cyan border
+                borderRadius: "10px", // Rounded corners
+                padding: "10px 20px", // Padding
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                width: "auto",
+                width: "auto", // Auto width
                 boxSizing: "border-box",
                 cursor: "pointer",
                 fontFamily: "Orbitron, sans-serif",
                 fontWeight: "bold",
                 fontSize: "24px",
                 transition: "background-color 0.3s, color 0.3s, box-shadow 0.3s",
-              }}
-            >
-              Log In
-            </button>
-          ) : (
-            <p className="text-lg mt-2 font-bold text-shadow-cyan">
-              User Balance: {walletAddress}
-            </p>
-          )}
+              },
+              label: "Log In",
+            }}
+           
+          />
         </div>
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center">
           {isClaimedSupplyLoading || isTotalSupplyLoading ? (
